@@ -1,6 +1,6 @@
 /* TODO */
 
-// Render sessionStorage on reload
+//
 
 /* Element selection */
 
@@ -31,38 +31,39 @@ export let tasks = JSON.parse(sessionStorage.getItem("tasks"))
 
 /* Logic */
 
+const bottomBorder = function() {
+  titelsEl.forEach(el => el.classList.add("border"));
+}
+
 const renderSessionStorage = function (tasks) {
   // If there is not tasks stored in session storage --> return
-  console.log(tasks[0]);
   if (!tasks[0]) return;
-  if (tasks[0]) console.log("Hoorayy!!");;
+  console.log(tasks[0]);
+
+  bottomBorder();
 
   // Add to correct column
   tasks.forEach(el => {
     let i = 1;
-    console.log(`IT: ${i}`);
+    console.log(`IT: ${i} Object.values: ${Object.values(el)}`);
     i++
 
-    document.querySelector("#mon-tasks").insertAdjacentHTML("beforeend", `<li class="task">${Object.values(tasks[el[0]])}</li>`) // THIS IS WHERE THE PROBLEM LIES
+    document.querySelector("#mon-tasks").insertAdjacentHTML("beforeend", `<li class="task">${el.value}</li>`); // THIS IS WHERE THE PROBLEM LIES
   })
 }
 
 const addToObj = function (ev) {
-  // Creates task number
-  // task = tasks.length;
-  // if (!task) task = 0;
-  
   // Adds task to array
-  tasks.push({day: selectEl.value, task: input_field.value})
+  tasks.push({day: selectEl.value, task: input_field.value});
 
   // Updating sessionStorage
-  myStorage.setItem("tasks", JSON.stringify(tasks))
+  myStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 const submitted = function (ev) {
   ev.preventDefault();
   
-  // Return if either there's no day or task selected
+  // Return if neither a day or task selected
   if (!input_field.value || selectEl.value == "select") { 
     return;
   }
@@ -71,10 +72,10 @@ const submitted = function (ev) {
   addToObj(ev);
 
   // Adds a bottom border to titles when first task is created
-  titelsEl.forEach(el => el.classList.add("border"))
+  bottomBorder();
 
   // Add to correct column
-  days[selectEl.value].insertAdjacentHTML("beforeend", `<li class="task">${input_field.value}</li>`)
+  days[selectEl.value].insertAdjacentHTML("beforeend", `<li class="task">${input_field.value}</li>`);
 }
 
 const clear = function (ev) {
@@ -82,7 +83,7 @@ const clear = function (ev) {
 
   // Clears sessionstorage & tasks array
   sessionStorage.setItem("tasks", JSON.stringify([]));
-  tasks = JSON.parse(myStorage.getItem("tasks"))
+  tasks = JSON.parse(myStorage.getItem("tasks"));
   
   // Clears UI
   tasksUlEl.forEach(el => {
@@ -90,7 +91,7 @@ const clear = function (ev) {
       el.removeChild(el.lastChild);
     }
   });
-  titelsEl.forEach(el => el.classList.remove("border"))
+  titelsEl.forEach(el => el.classList.remove("border"));
 }
 
 // Event listener
@@ -98,6 +99,6 @@ const clear = function (ev) {
 export const start = function (tasks) {
   console.log(tasks);
   renderSessionStorage(tasks);
-  input_form.addEventListener("submit", ev => submitted(ev))
+  input_form.addEventListener("submit", ev => submitted(ev));
   clr_btn.addEventListener("click", ev => clear(ev));
 }
