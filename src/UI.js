@@ -1,6 +1,8 @@
 /* TODO */
 
-//
+// Start up a dataserver - mysql
+// Implement login and registration
+// Organize the code
 
 /* Element selection */
 
@@ -24,7 +26,6 @@ let days = {
 }
 
 const myStorage = window.sessionStorage;
-console.log(myStorage);
 
 if (!sessionStorage.tasks) sessionStorage.setItem("tasks", JSON.stringify([]))
 export let tasks = JSON.parse(sessionStorage.getItem("tasks"))
@@ -38,17 +39,16 @@ const bottomBorder = function() {
 const renderSessionStorage = function (tasks) {
   // If there is not tasks stored in session storage --> return
   if (!tasks[0]) return;
-  console.log(tasks[0]);
 
+  // Adds bottom border
   bottomBorder();
 
   // Add to correct column
   tasks.forEach(el => {
-    let i = 1;
-    console.log(`IT: ${i} Object.values: ${Object.values(el)}`);
-    i++
+    let day = days[Object.values(el)[0]];
+    let value = Object.values(el)[1] 
 
-    document.querySelector("#mon-tasks").insertAdjacentHTML("beforeend", `<li class="task">${el.value}</li>`); // THIS IS WHERE THE PROBLEM LIES
+    day.insertAdjacentHTML("beforeend", `<li class="task">${value}</li>`);
   })
 }
 
@@ -71,7 +71,7 @@ const submitted = function (ev) {
   // Adds task to UI & sessionStorage 
   addToObj(ev);
 
-  // Adds a bottom border to titles when first task is created
+  // Adds a bottom border to titles
   bottomBorder();
 
   // Add to correct column
@@ -97,8 +97,7 @@ const clear = function (ev) {
 // Event listener
 
 export const start = function (tasks) {
-  console.log(tasks);
   renderSessionStorage(tasks);
   input_form.addEventListener("submit", ev => submitted(ev));
   clr_btn.addEventListener("click", ev => clear(ev));
-}
+};
