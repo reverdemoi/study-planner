@@ -1,6 +1,3 @@
-// IF YOU SEE THIS - IT WORKED
-
-
 /* TODO */
 
 // Start up a dataserver - mysql
@@ -9,12 +6,20 @@
 
 /* Element selection */
 
-const clr_btn = document.querySelector(".clear--button")
-const input_field = document.querySelector(".input--text");
-const input_form = document.querySelector(".input--form");
-const selectEl = document.querySelector("#days-dropdown")
-const titelsEl = document.querySelectorAll(".day-title")
-const tasksUlEl = document.querySelectorAll(".tasks")
+const clrBtn = document.querySelector(".clear--button");
+const inputField = document.querySelector(".input--text");
+const inputForm = document.querySelector(".input--form");
+const selectEl = document.querySelector("#days-dropdown");
+const titelsEl = document.querySelectorAll(".day-title");
+const tasksUlEl = document.querySelectorAll(".tasks");
+
+export const loginBtn = document.querySelector("#login--button");
+
+export const regBtn = document.querySelector("#register--button");
+export const regDiv = document.querySelector(".registration--popup");
+export const regForm = document.querySelector(".registration--form");
+export const regEmailEl = document.querySelector(".registration--input_email");
+export const regPasswordEl = document.querySelector(".registration--input_password");
 
 /* Variables */
 
@@ -30,8 +35,8 @@ let days = {
 
 const myStorage = window.sessionStorage;
 
-if (!sessionStorage.tasks) sessionStorage.setItem("tasks", JSON.stringify([]))
-export let tasks = JSON.parse(sessionStorage.getItem("tasks"))
+if (!sessionStorage.tasks) sessionStorage.setItem("tasks", JSON.stringify([]));
+export let tasks = JSON.parse(sessionStorage.getItem("tasks"));
 
 /* Logic */
 
@@ -49,7 +54,7 @@ const renderSessionStorage = function (tasks) {
   // Add to correct column
   tasks.forEach(el => {
     let day = days[Object.values(el)[0]];
-    let value = Object.values(el)[1] 
+    let value = Object.values(el)[1];
 
     day.insertAdjacentHTML("beforeend", `<li class="task">${value}</li>`);
   })
@@ -57,7 +62,7 @@ const renderSessionStorage = function (tasks) {
 
 const addToObj = function (ev) {
   // Adds task to array
-  tasks.push({day: selectEl.value, task: input_field.value});
+  tasks.push({day: selectEl.value, task: inputField.value});
 
   // Updating sessionStorage
   myStorage.setItem("tasks", JSON.stringify(tasks));
@@ -67,7 +72,7 @@ const submitted = function (ev) {
   ev.preventDefault();
   
   // Return if neither a day or task selected
-  if (!input_field.value || selectEl.value == "select") { 
+  if (!inputField.value || selectEl.value == "select") { 
     return;
   }
 
@@ -78,7 +83,7 @@ const submitted = function (ev) {
   bottomBorder();
 
   // Add to correct column
-  days[selectEl.value].insertAdjacentHTML("beforeend", `<li class="task">${input_field.value}</li>`);
+  days[selectEl.value].insertAdjacentHTML("beforeend", `<li class="task">${inputField.value}</li>`);
 }
 
 const clear = function (ev) {
@@ -97,10 +102,10 @@ const clear = function (ev) {
   titelsEl.forEach(el => el.classList.remove("border"));
 }
 
-// Event listener
+// Event listeners
 
 export const start = function (tasks) {
   renderSessionStorage(tasks);
-  input_form.addEventListener("submit", ev => submitted(ev));
-  clr_btn.addEventListener("click", ev => clear(ev));
+  inputForm.addEventListener("submit", ev => submitted(ev));
+  clrBtn.addEventListener("click", ev => clear(ev));
 };
