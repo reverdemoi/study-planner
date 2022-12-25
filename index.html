@@ -1,93 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script async type="module" src="src/controller.js"></script>
-  <title>Study Planner</title>
-</head>
-<body>
-
-  <h5 class="greeting">Log in</h5>
-
-  <header>
-    <h1>Study Planner</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script async type="module" src="src/controller.js"></script>
+    <title>Study Planner</title>
+  </head>
+  <body>
+    <h5 class="greeting">Please log in</h5>
 
     <button id="login--button">Login</button>
     <button id="register--button">Register</button>
-  </header>
-  
-  <section>
-    <form class="input--form">
-      <div class="day-selector">
-        <!-- <label for="day">What day?</label> -->
-        <select name="days" id="days-dropdown">
-          <option value="select" selected hidden>Select an option</option>
-          <option value="0">Monday</option>
-          <option value="1">Tuesday</option>
-          <option value="2">Wednesday</option>
-          <option value="3">Thursday</option>
-          <option value="4">Friday</option>
-          <option value="5">Saturday</option>
-          <option value="6">Sunday</option>
-        </select>
-      </div>
-      <input placeholder="Maths homework..." type="text" class="input--text" >
-    </form>
-    <button class="clear--button">Clear</button>
-    
-    <div class="output">
-      <div class="column">
-        <h3 class="day-title">Monday</h3>
-        <ul class="tasks" id="mon-tasks"></ul>
-      </div>
 
-      <div class="column">
-        <h3 class="day-title">Tuesday</h3>
-        <ul class="tasks" id="tue-tasks"></ul>
-      </div>
+    <header class="foreground">
+      <h1>Study Planner</h1>
+    </header>
 
-      <div class="column">
-        <h3 class="day-title">Wednesday</h3>
-        <ul class="tasks" id="wed-tasks"></ul>
-      </div>
+    <section class="foreground">
+      <form class="input--form">
+        <div class="day-selector">
+          <!-- <label for="day">What day?</label> -->
+          <select name="days" id="days-dropdown">
+            <option value="select" selected hidden>Select an option</option>
+            <option value="0">Monday</option>
+            <option value="1">Tuesday</option>
+            <option value="2">Wednesday</option>
+            <option value="3">Thursday</option>
+            <option value="4">Friday</option>
+            <option value="5">Saturday</option>
+            <option value="6">Sunday</option>
+          </select>
+        </div>
+        <input
+          placeholder="Maths homework..."
+          type="text"
+          class="input--text"
+        />
+      </form>
+      <button class="clear--button">Clear</button>
 
-      <div class="column">
-        <h3 class="day-title">Thursday</h3>
-        <ul class="tasks" id="thu-tasks"></ul>
-      </div>
+      <div class="output">
+        <div class="column">
+          <h3 class="day-title">Monday</h3>
+          <ul class="tasks" id="mon-tasks"></ul>
+        </div>
 
-      <div class="column">
-        <h3 class="day-title">Friday</h3>
-        <ul class="tasks" id="fri-tasks"></ul>
-      </div>
+        <div class="column">
+          <h3 class="day-title">Tuesday</h3>
+          <ul class="tasks" id="tue-tasks"></ul>
+        </div>
 
-      <div class="column">
-        <h3 class="day-title">Saturday</h3>
-        <ul class="tasks" id="sat-tasks"></ul>
-      </div>
+        <div class="column">
+          <h3 class="day-title">Wednesday</h3>
+          <ul class="tasks" id="wed-tasks"></ul>
+        </div>
 
-      <div class="column">
-        <h3 class="day-title">Sunday</h3>
-        <ul class="tasks" id="sun-tasks"></ul>
+        <div class="column">
+          <h3 class="day-title">Thursday</h3>
+          <ul class="tasks" id="thu-tasks"></ul>
+        </div>
+
+        <div class="column">
+          <h3 class="day-title">Friday</h3>
+          <ul class="tasks" id="fri-tasks"></ul>
+        </div>
+
+        <div class="column">
+          <h3 class="day-title">Saturday</h3>
+          <ul class="tasks" id="sat-tasks"></ul>
+        </div>
+
+        <div class="column">
+          <h3 class="day-title">Sunday</h3>
+          <ul class="tasks" id="sun-tasks"></ul>
+        </div>
       </div>
+    </section>
+
+    <div class="registration--popup hidden">
+      <form class="registration--form">
+        <label for="name">Enter your email: </label>
+        <input type="text" class="registration--input_email" />
+        <br />
+        <label for="name">Enter your desired password: </label>
+        <input type="text" class="registration--input_password" />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
     </div>
-  </section>
-
-  <div class="registration--popup hidden">
-    <form class="registration--form">
-      <label for="name">Enter your email: </label>
-      <input type="text" class="registration--input_email">
-      <br>
-      <label for="name">Enter your desired password: </label>
-      <input type="text" class="registration--input_password">
-      <br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
-  <!-- <form class="registration--form hidden" enctype="multipart/form-data">
+    <!-- <form class="registration--form hidden" enctype="multipart/form-data">
     <label for="text">Enter your email: </label>
     <input type="text" class="registration--input_email">
     <br>
@@ -96,6 +99,5 @@
     <br>
     <input type="submit" value="Submit">
   </form> -->
-  
-</body>
+  </body>
 </html>

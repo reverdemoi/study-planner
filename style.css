@@ -63,7 +63,7 @@ section {
   /* border-bottom: 1px solid #000; */
   text-align: center;
   font-size: 16px;
-  
+
   width: 90%;
   padding: 5px 0;
   margin-bottom: 10px;
@@ -72,7 +72,7 @@ section {
   /* inline-size: calc(section-width / 7); */
   overflow-wrap: break-word;
   hyphens: auto;
-  
+
   /* border-bottom: 1px solid #000; */
   border-radius: 5px;
   box-shadow: 2px 3px 10px 0.01px #444;
@@ -112,9 +112,13 @@ section {
   padding: 20px 10px;
   margin: auto;
   /* opacity: 0; */
-  width: fit-content;;
+  width: fit-content;
 }
 
 .hidden {
   opacity: 0;
+}
+
+.greeting {
+  font-size: 24px;
 }
