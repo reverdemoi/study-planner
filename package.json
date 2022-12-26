@@ -1,7 +1,6 @@
 {
   "name": "study-planner",
   "version": "1.0.0",
-  "description": "",
   "main": "./src/controller.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/reverdemoi/study-planner/issues"
   },
-  "homepage": "https://github.com/reverdemoi/study-planner#readme"
+  "homepage": "https://github.com/reverdemoi/study-planner#readme",
+  "description": ""
 }
