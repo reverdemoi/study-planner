@@ -1,7 +1,3 @@
-/* IMPORTS */
-
-// import * as UI from "./view.js";
-
 /* VARIABLES */
 
 export let accounts = [

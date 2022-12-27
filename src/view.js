@@ -1,14 +1,3 @@
-// import { accounts, update, clear as clearSes } from "./sessionStorage.js";
-// import { accounts } from "./registration.js";
-
-// import { getCurUserData } from "./registration.js";
-
-/* TODO */
-
-// Start up a dataserver - mysql
-// Implement login and registration
-// Organize the code
-
 /* Element selection */
 
 export const clrBtn = document.querySelector(".clear--button");
@@ -19,6 +8,8 @@ const titelsEl = document.querySelectorAll(".day-title");
 const tasksUlEl = document.querySelectorAll(".tasks");
 const mainEls = document.querySelectorAll(".foreground");
 const greetingEl = document.querySelector(".greeting");
+
+const overlay = document.querySelector("#overlayEl");
 
 export const loginBtn = document.querySelector("#login--button");
 
@@ -44,15 +35,9 @@ export let days = {
 
 /* Logic */
 
+// Creates a bottom border for all the titles
 const bottomBorder = function () {
   titelsEl.forEach(el => el.classList.add("border"));
-};
-
-const addToObj = function (ev) {
-  // Adds task to array
-  // accounts.push({ day: selectEl.value, task: inputField.value });
-  // Updating sessionStorage
-  // update();
 };
 
 export const renderTasks = function (tasks) {
@@ -66,18 +51,6 @@ export const renderTasks = function (tasks) {
   bottomBorder();
 };
 
-export const renderSessionStorage = function (tasks) {
-  // If there is not tasks stored in session storage --> return
-  console.log(tasks);
-  if (!tasks[0]) return;
-
-  // Adds bottom border
-  bottomBorder();
-
-  // Add to correct column
-  renderTasks(tasks);
-};
-
 export const getTaskData = function () {
   return { day: selectEl.value, task: inputField.value };
 };
@@ -88,13 +61,8 @@ export const submitted = function () {
     return;
   }
 
-  // Adds task to sessionStorage
-  // addToObj(ev);
-
   // Adds a bottom border to titles
   bottomBorder();
-
-  // Adds to curUser's tasks
 
   // Add to correct column
   days[selectEl.value].insertAdjacentHTML(
@@ -102,6 +70,9 @@ export const submitted = function () {
     `<li class="task">${inputField.value}</li>`
   );
 };
+// {
+/* <li class="task--item"> <input type="checkbox" id="task-${el.id}"/> <label for="task-${el.id}">${el.task}</label> </li>  */
+// }
 
 export const clearTasks = function (ev) {
   ev.preventDefault();
@@ -127,11 +98,21 @@ export const renderApp = function (user) {
 };
 
 export const renderRegScreen = function () {
+  overlay.classList.toggle("overlay");
+
   regDiv.classList.remove("hidden");
 };
 
 export const hideRegScreen = function () {
+  overlay.classList.toggle("overlay");
   regDiv.classList.add("hidden");
+
+  regEmailEl.value = "";
+  regPasswordEl.value = "";
+};
+
+export const toggleMainInterface = function () {
+  mainEls.forEach(el => el.classList.toggle("hidden"));
 };
 
 // Gets data from registration input

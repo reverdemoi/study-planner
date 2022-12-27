@@ -1,3 +1,5 @@
+// import * as data from "./database.js";
+
 // import * as ses from "./sessionStorage.js";
 import * as UI from "./view.js";
 import * as reg from "./registration.js";
@@ -8,7 +10,6 @@ const start = function () {
   // ses.update(ses.accounts, ses.curUser);
 
   /* UI */
-  // UI.renderSessionStorage(reg.getCurUserData());
   UI.inputForm.addEventListener("submit", ev => {
     ev.preventDefault();
 
@@ -18,7 +19,10 @@ const start = function () {
   UI.clrBtn.addEventListener("click", ev => UI.clearTasks(ev));
 
   /* Registration */
-  UI.regBtn.addEventListener("click", ev => reg.renderRegScreen());
+  UI.regBtn.addEventListener("click", ev => {
+    UI.renderRegScreen();
+    UI.toggleMainInterface();
+  });
 
   // Registers an account
   UI.regForm.addEventListener("submit", ev => {
@@ -28,6 +32,7 @@ const start = function () {
     reg.addAcc(UI.getData());
 
     UI.hideRegScreen();
+    UI.toggleMainInterface();
     UI.renderGreeting(reg.getCurUserData().name);
   });
 
@@ -48,12 +53,15 @@ const init = function () {
   // Get the planner setup
   start();
 
-  if (!reg.curUser) return UI.renderRegScreen();
+  if (!reg.curUser) {
+    UI.renderRegScreen();
+    UI.toggleMainInterface();
+    return;
+  }
 
+  // UI.renderMainInterface();
   UI.renderGreeting(reg.getCurUserData().name);
   UI.renderTasks(reg.getCurUserData().tasks);
-
-  // UI.renderSessionStorage(reg.getCurUserData(ses.curUserSes.tasks));
 };
 
 window.onload = function () {

@@ -16,5 +16,10 @@
     "url": "https://github.com/reverdemoi/study-planner/issues"
   },
   "homepage": "https://github.com/reverdemoi/study-planner#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3"
+  }
 }

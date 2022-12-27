@@ -7,7 +7,7 @@
 
 body {
   background-color: #ffbf81;
-  margin: 0 20px;
+  /* margin: 0 20px; */
 }
 
 header {
@@ -108,11 +108,16 @@ section {
 
 .registration--popup {
   background-color: aqua;
+  width: 400px;
+
   box-sizing: border-box;
   padding: 20px 10px;
-  margin: auto;
   /* opacity: 0; */
-  width: fit-content;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hidden {
@@ -121,4 +126,16 @@ section {
 
 .greeting {
   font-size: 24px;
+}
+
+/* BLUR TEST */
+
+.overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
 }
