@@ -16,6 +16,7 @@
 
       <button id="login--button">Login</button>
       <button id="register--button">Register</button>
+      <button id="helper--button">Helper</button>
 
       <header class="foreground">
         <h1>Study Planner</h1>
@@ -82,13 +83,31 @@
       </section>
     </div>
 
-    <div class="registration--popup hidden">
+    <!-- REGISTRATION -->
+    <div class="popup registration--popup hidden">
       <form class="registration--form">
+        <h5>REGISTRATION</h5>
         <label for="name">Enter your email: </label>
         <input type="text" class="registration--input_email" />
         <br />
         <label for="name">Enter your desired password: </label>
         <input type="text" class="registration--input_password" />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <!-- Because both are hidden - not deactivated - one overlaps the other one - in turn making it impossible to access the one beneath as the other (invisisble) one is above -->
+
+    <!-- LOGIN -->
+    <div class="popup login--popup hidden">
+      <form class="login--form">
+        <h5>LOGIN</h5>
+        <label for="name">Enter your email: </label>
+        <input type="text" class="login--input_email" />
+        <br />
+        <label for="name">Enter your desired password: </label>
+        <input type="text" class="login--input_password" />
         <br />
         <input type="submit" value="Submit" />
       </form>

@@ -106,7 +106,7 @@ section {
   right: 55px;
 }
 
-.registration--popup {
+.popup {
   background-color: aqua;
   width: 400px;
 
@@ -121,7 +121,7 @@ section {
 }
 
 .hidden {
-  opacity: 0;
+  display: none;
 }
 
 .greeting {

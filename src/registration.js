@@ -10,11 +10,26 @@ export let accounts = [
   //     { day: "1", task: "Maths homework" },
   //     { day: "4", task: "Biology homework" }
   //   ]
+  // },
+  // {
+  //   id: 2,
+  //   email: "stefan@nis.nu",
+  //   password: "mypassword",
+  //   name: "stefan",
+  //   tasks: [
+  //     { day: "0", task: "Chemistry homework" },
+  //     { day: "3", task: "English homework" },
+  //     { day: "5", task: "Chill" }
+  //   ]
   // }
 ];
 export let curUser = 0;
 
 /* FUNCTIONS / LOGIC */
+
+export const updateCurUser = function (newId) {
+  return (curUser = newId);
+};
 
 export const addAcc = function (data) {
   let id = accounts.length + 1;

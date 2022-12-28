@@ -11,8 +11,6 @@ const greetingEl = document.querySelector(".greeting");
 
 const overlay = document.querySelector("#overlayEl");
 
-export const loginBtn = document.querySelector("#login--button");
-
 export const regBtn = document.querySelector("#register--button");
 export const regDiv = document.querySelector(".registration--popup");
 export const regForm = document.querySelector(".registration--form");
@@ -20,6 +18,14 @@ export const regEmailEl = document.querySelector(".registration--input_email");
 export const regPasswordEl = document.querySelector(
   ".registration--input_password"
 );
+
+export const loginBtn = document.querySelector("#login--button");
+export const loginDiv = document.querySelector(".login--popup");
+export const loginForm = document.querySelector(".login--form");
+export const loginEmailEl = document.querySelector(".login--input_email");
+export const loginPasswordEl = document.querySelector(".login--input_password");
+
+export const helperBtn = document.querySelector("#helper--button");
 
 /* Variables */
 
@@ -38,6 +44,10 @@ export let days = {
 // Creates a bottom border for all the titles
 const bottomBorder = function () {
   titelsEl.forEach(el => el.classList.add("border"));
+};
+
+const hideBottomBorder = function () {
+  titelsEl.forEach(el => el.classList.remove("border"));
 };
 
 export const renderTasks = function (tasks) {
@@ -74,11 +84,8 @@ export const submitted = function () {
 /* <li class="task--item"> <input type="checkbox" id="task-${el.id}"/> <label for="task-${el.id}">${el.task}</label> </li>  */
 // }
 
-export const clearTasks = function (ev) {
-  ev.preventDefault();
-
-  // Clears sessionstorage & accountsSes array
-  clearSes();
+export const clearTasks = function () {
+  // IMPLEMENT CLEARING TASKS FROM USER DATA ASWELL
 
   // Clears UI
   tasksUlEl.forEach(el => {
@@ -87,6 +94,11 @@ export const clearTasks = function (ev) {
     }
   });
   titelsEl.forEach(el => el.classList.remove("border"));
+};
+
+export const clearInput = function () {
+  inputField.value = "";
+  selectEl.value = "select";
 };
 
 export const renderGreeting = function (user) {
@@ -99,8 +111,11 @@ export const renderApp = function (user) {
 
 export const renderRegScreen = function () {
   overlay.classList.toggle("overlay");
-
   regDiv.classList.remove("hidden");
+};
+export const renderLoginScreen = function () {
+  overlay.classList.toggle("overlay");
+  loginDiv.classList.remove("hidden");
 };
 
 export const hideRegScreen = function () {
@@ -110,12 +125,27 @@ export const hideRegScreen = function () {
   regEmailEl.value = "";
   regPasswordEl.value = "";
 };
+export const hideLoginScreen = function () {
+  overlay.classList.toggle("overlay");
+  loginDiv.classList.add("hidden");
+
+  loginEmailEl.value = "";
+  loginPasswordEl.value = "";
+};
 
 export const toggleMainInterface = function () {
   mainEls.forEach(el => el.classList.toggle("hidden"));
 };
 
 // Gets data from registration input
-export const getData = function () {
+export const getRegData = function () {
   return { email: regEmailEl.value, password: regPasswordEl.value };
+};
+export const getLoginData = function () {
+  return { email: loginEmailEl.value, password: loginPasswordEl.value };
+};
+export const updateUI = function (tasks) {
+  clearTasks();
+  hideBottomBorder();
+  renderTasks(tasks);
 };
