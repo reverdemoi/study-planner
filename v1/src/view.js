@@ -9,7 +9,7 @@ const tasksUlEl = document.querySelectorAll(".tasks");
 const mainEls = document.querySelectorAll(".foreground");
 const greetingEl = document.querySelector(".greeting");
 
-const overlay = document.querySelector("#overlayEl");
+const overlay = document.querySelector(".overlayEl");
 
 export const regBtn = document.querySelector("#register--button");
 export const regDiv = document.querySelector(".registration--popup");
